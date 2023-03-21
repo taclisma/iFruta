@@ -13,18 +13,28 @@ class Router {
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => $method
+            'method' => $method,
+            'only' => null
     
         ];
+
+        return $this;
     }
 
     public function get($uri, $controller){
-        $this->add($uri, $controller, 'GET');
+        return $this->add($uri, $controller, 'GET');
     }
 
 
     public function post($uri, $controller){
-        $this->add($uri, $controller, 'POST');
+        return $this->add($uri, $controller, 'POST');
+    }
+
+
+    // metodo para validação de pedido de pagina a nivel de rota
+    public function only($key){
+        $this->routes[array_key_last($this->routes)]['only'] = $key;
+        return $this->routes;
     }
 
 
@@ -32,7 +42,28 @@ class Router {
 
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+                
+            #############
+            #   redirecionamento de rotas para usuário não acessar paginas que nao tem acesso
+
+                if($route['only'] === 'guest'){
+                    if($_SESSION['current_user'] ?? false){
+                        header('location: /registro');
+                        exit();
+                    }
+                }
+
+                if($route['only'] === 'auth'){
+                    if(!$_SESSION['current_user'] ?? false){
+                        header('location: /');
+                        exit();
+                    }
+                }
+            #   
+            ############
+            
                 return require base_path($route['controller']);
+                
             }
         }
 

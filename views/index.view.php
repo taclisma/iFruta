@@ -29,11 +29,14 @@
             <div id="user_senha">
                <label for="user">Identificação do Usuário: </label>
                <input type="text" name="user" id="user" placeholder="Login">
-
+               
                <label for="senha">Senha: </label>
                <input type="password" name="senha" id="senha" placeholder="Senha">
             </div>
-
+            
+            <?php if (isset($errors['ldap'])) : ?>
+               <p class="erro"> <?= $errors['ldap'] ?> </p>
+            <?php endif; ?>
 
             <button type="submit" id="login" value="login">ENTRAR</button>
 
