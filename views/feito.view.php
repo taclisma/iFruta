@@ -35,7 +35,7 @@
 
             <div class="text">
                 <h3 id="erro">Ops!</h3>
-                <p>Parece que o kit alimentação ja foi retirado em:</p>
+                <p>Parece que o kit alimentação ja foi retirado hoje! Hora do registro:</p>
                 <p> <?=$data?> </p>
             </div>
         <?php endif; ?>

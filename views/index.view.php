@@ -42,7 +42,7 @@
 
          </form>
 
-         <?php //require 'partials/popup.php' ?>
+         <?php require 'partials/popup.php' ?>
       
    </body>
 

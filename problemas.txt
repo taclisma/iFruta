@@ -1,0 +1,2 @@
+f5 no post do receber
+/auth vai pro login mesmo logado
