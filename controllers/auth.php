@@ -15,7 +15,7 @@ $db = App::container()->resolve('Core\Database');
 
 // autentica login LDAP ou usuario incorreto
 if(!$ldap->user_auth($_POST['user'],$_POST['senha'])){
-    $errors['ldap'] = 'Usuário ou senha incorretos';
+    $errors['ldap'] = 'Usuário ou senha incorretos.';
 } 
 
 // caso encontrar erros, volta para o index e mostra erros na tela (acima do botao de entrar)

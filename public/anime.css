@@ -1,86 +1,81 @@
-*{
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fffef9;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-    height: 100%;
-    width: 100%;
+header {
+  padding: 0.2rem 1rem 0 1rem;
 }
-#logo{
+
+#logo {
   width: 100%;
   max-width: 350px;
-}  
-  .container{
-    height: 100%;
-  }
-  
-  .text {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    right: 0;
-    font: bold 1.25rem/1;
-    color: #000000;
-    text-align: center;
-  }
-  
-  .progress-bar {
-    position: absolute;
-    height: 10px;
-    width: 0;
-    right: 0;
-    top: 40%;
-    left: 50%;
-    border-radius: 200px;
-    transform: translateY(-50%) translateX(-50%);
-    background: lighten(#2B2D2F, 15%);
-  }
-  
-  svg {
-    width: 60px;
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%) translateX(-50%);
-    left: 50%;
-    right: 0;
-    cursor: pointer;
-  }
-  
-  .check {
-    
-    fill: none;
-    stroke: #FFFFFF;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
+}
 
-  .cancela>p{
-    margin-top: 5%;
-    width: 60px;
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%) translateX(-50%);
-    left: 50%;
-    right: 0;
-    cursor: pointer;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    color: white;
-    font-weight: 900;
-    font-size: 7em;
-  }
-  .cancela{
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    right: 0;
-    top: 40%;
-    left: 50%;
-    border-radius: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    background: #ce520a;
-    text-align: center;
-  }
+.texto_registro {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  right: 0;
+  font: bold 1.25rem/1;
+  color: #000000;
+  text-align: center;
+}
+
+.progress-bar {
+  position: absolute;
+  height: 10px;
+  width: 0;
+  right: 0;
+  top: 40%;
+  left: 50%;
+  border-radius: 200px;
+  transform: translateY(-50%) translateX(-50%);
+  background: lighten(#2b2d2f, 15%);
+}
+
+svg {
+  width: 60px;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+  right: 0;
+}
+
+.check {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cancela > p {
+  margin-top: 5%;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+  right: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: white;
+  font-weight: 900;
+  font-size: 7em;
+}
+.cancela {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  right: 0;
+  top: 40%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background: #ce520a;
+  text-align: center;
+}
