@@ -11,7 +11,7 @@
       <div class="popup" id="popup2" >
          <!-- onclick="hide('popup2')" -->
          <div id="popx"><a id="x" href="#" onclick="hide('popup2')">X</a></div> 
-         <p id="poptxt">Cardapio do dia: <br> <span>Banana</span></p>
+         <p id="poptxt">Cardápio do dia: <br> <span>Banana</span></p>
          
       </div>
       <!-- fim popup hiden -->

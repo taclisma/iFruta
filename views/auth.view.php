@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iFruta</title>
-      
+    <link rel="shortcut icon" href="fruta.ico" type="image/x-icon">
     <!-- import de icon para o botao float -->
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="style.css">
@@ -17,13 +17,13 @@
      
    </head>
 
-<body id="body_sucess">
-    <header><img src="logo.png" alt="sucesso"></header>
+<body class="body_sucess">
+    <header><img id="logo" src="fundo.png" alt="sucesso"></header>
 
     <section  class="container">
         <form method="POST" class="container -imagem" action="/registrar"> 
             <input hidden value="<?= $matricula;?>" name="user" id="user">
-            <button type="submit" id="receber">
+            <button type="submit" id="botao_receber">
                 <div class="text">RECEBER</div>
             </button>
             <p>
