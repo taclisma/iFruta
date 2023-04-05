@@ -1,2 +1,5 @@
 f5 no post do receber
-/auth vai pro login mesmo logado
+
+- Resolvido
+ -- /auth vai pro login mesmo logado 
+    --> mudado de only('auth') para only('guest'), agora vai para botao de receber
