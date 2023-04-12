@@ -4,29 +4,32 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-  <link rel="shortcut icon" href="fruta.ico" type="image/x-icon">
+
+      <!-- Título da aba -->
       <title>iFruta</title>
+
+      <!-- Icone da página -->
+      <link rel="shortcut icon" href="/images/fruta.ico" type="image/x-icon">
+ 
+        <!-- Import do css -->
+      <link rel="stylesheet" href="/Css/login.css">
+
+      <!-- Fontes -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
       <!-- import de icon para o botao float -->
       <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-      <link rel="stylesheet" href="index.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-      <script>0</script>
    </head>
 
-   <body id="body_login">
-
-  
+   <body>
       <section class="container section">
-     
-         <form class="box" action="/auth" method="POST">
-         <img id="logo" src="fundo.png" alt="">
-         <p id="texto-info">Informe o usuário e a senha do Moodle</p>
+         <form class="box_form" action="/auth" method="POST">
+         <img id="logo_login" src="/images/logo_ifrs.png" alt="Logo do IFRS Campus Porto Alegre">
+         <p id="login_paragraph">Informe o usuário e a senha do Moodle</p>
          <?php if (isset($errors['ldap'])) : ?>
-               <p class="erro"> <?= $errors['ldap'] ?> </p>
+               <p class="mensagem_erro"> <?= $errors['ldap'] ?> </p>
             <?php endif; ?>
                <label for="user">Identificação do Usuário: </label>
                <input type="text" name="user" id="user">

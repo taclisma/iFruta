@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iFruta</title>
-    <link rel="shortcut icon" href="fruta.ico" type="image/x-icon">
-    <!-- import de icon para o botao float -->
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Título da aba -->
+    <title>iFruta | Receber kit</title>
+
+    <!-- Icone da página -->
+    <link rel="shortcut icon" href="/images/fruta.ico" type="image/x-icon">
+
+    <!-- Import do css -->
+    <link rel="stylesheet" href="/Css/receber.css">
+
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Poppins:wght@200&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-     
+    <!-- import de icon para o botao float -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
    </head>
 
-<body class="body_sucess">
-    <header><img id="logo" src="fundo.png" alt="sucesso"></header>
+<body>
 
-    <section  class="container">
-        <form method="POST" class="container -imagem" action="/registrar"> 
+    <header>
+      <img id="logo_header" src="/images/logo_ifrs.png" alt="Logo do IFRS Campus Porto Alegre">
+    </header>
+
+    <section class="container">
+        <form method="POST" class="container receber" action="/registrar"> 
             <input hidden value="<?= $matricula;?>" name="user" id="user">
-            <button type="submit" id="botao_receber">
-                <div class="text">RECEBER</div>
-            </button>
-            <p>
+            <button type="submit" id="botao_receber">RECEBER</button>
+            <p class="matricula" style="text-align=center">
               Matrícula: <?= $matricula;?>
             </p>
-           
         </form>
-        
     </section>
-
-
-    
 </body>
-
 </html>

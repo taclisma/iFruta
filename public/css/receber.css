@@ -1,0 +1,143 @@
+html {
+  --green-1: #66aa11;
+  --green-2: #599c06;
+  --black-1: #232c33;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fffef9;
+}
+
+/* Tamanho do header */
+header {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Logo do IFRS */
+#logo_header {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* section que contém o botão de receber */
+.container {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* botão de rececer kit */
+#botao_receber {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.125rem;
+  padding: 1rem 4rem;
+  background-color: var(--green-1);
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  box-shadow: 2px 2px 2px rgb(0 0 0 / 16%);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+#botao_receber:hover {
+  background: var(--green-2);
+}
+
+/* --- Páginas de confirmação de recebimento --- */
+
+/* Mensagem do registro */
+.texto_registro {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  right: 0;
+  font: bold 1.25rem/1;
+  color: var(--black-1);
+  text-align: center;
+}
+
+/* Barra de progresso da animação  */
+.progress-bar {
+  position: absolute;
+  height: 10px;
+  right: 0;
+  top: 40%;
+  left: 50%;
+  border-radius: 200px;
+  transform: translateY(-50%) translateX(-50%);
+  background: lighten(#2b2d2f, 15%);
+}
+
+/* SVG da animação */
+svg {
+  width: 60px;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+  right: 0;
+}
+
+/* Sinal de check da animação */
+.check {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.falha_registro > p {
+  margin-top: 5%;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+  right: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: white;
+  font-weight: 900;
+  font-size: 7em;
+}
+.falha_registro {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  right: 0;
+  top: 40%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background: #ce520a;
+  text-align: center;
+}
+
+/* RESPONSIVO */
+
+/* Ajuste o logo para o centro quando chegar em 500px*/
+@media only screen and (max-width: 500px) {
+  header {
+    text-align: center;
+  }
+}
+
+/* Diminui o tamanho da animação de erro */
+@media only screen and (max-width: 320px) {
+  .falha_registro {
+    height: 150px;
+    width: 150px;
+  }
+  .falha_registro > p {
+    font-size: 5em;
+  }
+}
