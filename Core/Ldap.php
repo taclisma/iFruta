@@ -19,7 +19,7 @@ class Ldap {
     public function user_auth($user, $pass){
         $ldap_user = 'uid='.$user .$this->config['dc'];
         return ldap_bind($this->conn, $ldap_user, $pass);
-
+        //comentar para não aparecer erro
     }
 }
 
