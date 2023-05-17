@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/images/fruta.ico" type="image/x-icon">
 
     <!-- Import do css -->
-    <link rel="stylesheet" href="/Css/receber.css">
+    <link rel="stylesheet" href="/css/receber.css">
 
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
