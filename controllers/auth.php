@@ -14,21 +14,24 @@ $db = App::container()->resolve('Core\Database');
 
 
 // autentica login LDAP ou usuario incorreto
-if(!$ldap->user_auth($_POST['user'],$_POST['senha'])){
-    $errors['ldap'] = 'Usuário ou senha incorretos.';
-} 
+$autorizar = $ldap->pesquisaUsuario($_POST['user'],$_POST['senha']);
+
+//if(!autorizar){
+//    errors['ldap'] = 'Usuário ou senha incorretos..';
+//}
 
 // caso encontrar erros, volta para o index e mostra erros na tela (acima do botao de entrar)
-if(!empty($errors)){
-    view('index.view.php', ['errors' => $errors]);
-    exit();
-}
+//if(!empty($errors)){
+//    view('index.view.php', ['errors' => $errors]);
+//    exit();
+//}
 
 // procura user no banco (só tem alunos de ensino medio) ou vai para pagina erro de autorização
-$curr_user = $db->query('SELECT matricula FROM ALUNOS WHERE login = :login;', ['login' => $_POST['user']])->fetchOrFail(Response::FORBIDDEN);
+//$curr_user = $db->query('SELECT matricula FROM ALUNOS WHERE login = :login;', ['login' => $_POST['user']])->fetchOrFail(Response::FORBIDDEN);
 
 // adiciona usuario à sessão
-$_SESSION['current_user'] = $curr_user['matricula'];
+//$_SESSION['current_user'] = $curr_user['matricula'];
 
+die();
+//header('location: /registro');
 
-header('location: /registro');
