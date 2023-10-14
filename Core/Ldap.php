@@ -19,13 +19,13 @@ class Ldap {
         } else {
                 error_log("ldapConn: conn ruim \n", 0);
         }
-        $this->ldapBind = ldap_bind($this->ldapConn, $config['ldapUser'], $config['ldapPassword']);
-        if ($this->ldapBind){
-                error_log("ldapBind: ok\n", 0);
+        // $this->ldapBind = ldap_bind($this->ldapConn, $config['ldapUser'], $config['ldapPassword']);
+        // if ($this->ldapBind){
+        //         error_log("ldapBind: ok\n", 0);
 
-        } else {
-                error_log("ldapBind: ruim \n", 0);
-        }
+        // } else {
+        //         error_log("ldapBind: ruim \n", 0);
+        // }
     }
 
     public function pesquisaUsuario($user, $pass){
@@ -34,38 +34,62 @@ class Ldap {
 
         if ($ldapSearch) {
                 $ldapEntry = ldap_first_entry($this->ldapConn, $ldapSearch);
+                $userBind = $this->autorizaUsuario($ldapEntry, $pass);
+                #die("deu bom");
+
+                // Retrieve attributes and their values
                 $ldapAtributes = ldap_get_attributes($this->ldapConn, $ldapEntry);
-                $atributeArray = implode(" - ", $ldapAtributes);
-                error_log("ldapAtribute: {$atributeArray}, {$ldapAtributes} \n", 0);
-                $dn = ldap_get_values($this->ldapConn, $ldapEntry, "dn");
-                //$uid = implode(lda_get_values($this->ldapConn, $ldapEntry, "uid"));
-                ldap_get_errorno();
-                // json_decode()  - > testar
-                error_log("user dn: {$dn}, {$uid} \n", 0);
-        } else {
-                die("Erro na pesquisa LDAP: " . ldap_error($this->ldapConn));
+
+                #print_r($ldapAtributes['memberOf'][0]);
+
+                // Mudanção Luis
+                //
+                #$string= $ldapAtributes['memberOf'][0];
+                #$parts = explode(",", $string);
+                #$curso = explode("=", $parts[0]);
+                #$curso = $curso[1];
+                #echo $curso;
+                $curso= explode("=",  explode(",", $ldapAtributes['memberOf'][0])[0])[1]; // são as mesmas linhas de cima mas em uma só
+                $matricula= explode("@", $ldapAtributes['mail'][0])[0];
+                $nome= $ldapAtributes['cn'][0];
+
+                echo "Matrícula: ".$matricula."<br>Curso: ".$curso."<br>Nome: ".$nome."<br>Login: ".$user;
+                #print_r(explode("@", $ldapAtributes['mail'][0]));
+
+                // FIM MUDANÇA LUIS     
+
+
+
+                        error_log("ldapAtribute: {$ldapAtributes} user : {$ldapAtributes[1]}\n", 0);
+                        $uid = ldap_get_values($this->ldapConn, $ldapEntry, '(uid={$uid})');
+                        print_r($uid);
+                        // Loop through and display attributes and values
+                        foreach ($uid as $attributeName => $attributeValues) {
+                                error_log("  Attribute: {$attributeName} :" , 0);
+                                for ($i = 0; $i < $attributeValues['count']; $i++) {
+                                        error_log("{$attributeValues[$i]}", 0);
+                                }
+                        }
+
+                        error_log("user edunickname: {$uid[0]}} \n", 0);
+                } else {
+                        die("Erro na pesquisa LDAP: " . ldap_error($this->ldapConn));
+                }
         }
-    }
+
 
     
-    public function autorizaUsuario($user, $pass){
-        $ldapEntries = ldap_first_entry($this->ldapConn, $ldapSearch);
-        error_log("ldaps ENTRY: {$ldapEntries} \n", 0);
-
-        if ($ldapEntries['count'] == 1) {
-                $userDN = $ldapEntries[0]['dn'];
-                error_log("user dn: {$userDN} \n", 0);
-                $userBind = ldap_bind($this->ldapConn, $userDN, $password);
-                if ($userBind) {
-                        //$userBind
-                        return true;
-                } else {
-                        die("Senha incorreta!");
-                }
-        } else {
-                die ("Usuário não encontrado!");
+    public function autorizaUsuario($entry, $pass){
+        if ($entry){
+                $userdn =  ldap_get_dn($this->ldapConn, $entry);
+                error_log("user dn : {$userdn}");
+                $userBind = ldap_bind($this->ldapConn, $userdn, $pass);
+                if ($userBind)
+                        return $userBind;
+                die("falha no bind user");
         }
-    }
+        die("usuário nao encontrado");
+}
 
 }
 

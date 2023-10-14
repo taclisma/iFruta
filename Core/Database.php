@@ -10,9 +10,11 @@ class Database {
     protected $statement;
 
     public function __construct($config){
-        $dsn = "mysql:" . http_build_query($config, '', ';');
+        //$dsn = "mysql:" . http_build_query($config, '', ';');
+        //$this->conn = New PDO($dsn, options:[PDO::ATTR_DEFAULT_FETCH_MODE =>PDO::FETCH_ASSOC]);
     
-        $this->conn = New PDO($dsn, options:[PDO::ATTR_DEFAULT_FETCH_MODE =>PDO::FETCH_ASSOC]);
+        $dsn = "mysql:dbname=".$config['dbname'].";host=".$config['host'];
+        $this->conn = New PDO($dsn, $config['user'], $config['password']);
 
 
     }
