@@ -2,3 +2,4 @@ config.php
 Core/Validator.php
 teste.php
 ldap_config_info.txt
+sqls/

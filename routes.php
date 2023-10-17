@@ -10,4 +10,5 @@ $router->get('/registro', 'controllers/registro.php')->only('auth');
 
 $router->post('/registrar', 'controllers/registrar.php')->only('auth');
 
+
 $router->get('/exit', 'controllers/exit.php');

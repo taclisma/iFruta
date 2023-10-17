@@ -29,9 +29,13 @@ function base_path($path){
 
 
 # require view
-function view($path, $props = []){
+function view($path, $props = [], $link = null){
     extract($props);
     require base_path('views/' . $path);
+    if ($link) {
+        $link = htmlspecialchars($link, ENT_QUOTES, 'UTF-8');
+        echo '<script>window.history.pushState({}, "", "' . $link . '");</script>';
+    }
 }
 
 

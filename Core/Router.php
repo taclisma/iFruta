@@ -47,14 +47,14 @@ class Router {
             #   redirecionamento de rotas para usuário não acessar paginas que nao tem acesso
 
                 if($route['only'] === 'guest'){
-                    if($_SESSION['current_user'] ?? false){
+                    if(isset($_SESSION['usuario']) ?? false){
                         header('location: /registro');
                         exit();
                     }
                 }
 
                 if($route['only'] === 'auth'){
-                    if(!$_SESSION['current_user'] ?? false){
+                    if(!isset($_SESSION['usuario']) ?? false){
                         header('location: /');
                         exit();
                     }

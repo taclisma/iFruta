@@ -38,7 +38,6 @@ class Database {
         if(! $prop){
             abort($err);
         }
-
         return $prop;
     }
 

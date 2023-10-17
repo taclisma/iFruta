@@ -9,6 +9,7 @@
 <body>
     <h1>Erro 403.</h1>
     <h2>Você não tem permissão para visualizar essa página.</h2>
+    <?php session_destroy();?>
     <a href="/">Voltar</a>
 </body>
 </html>
