@@ -20,7 +20,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
       <!-- import de icon para o botao float -->
-      <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+      <script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/js/font-awesome.min.js" crossorigin="anonymous"></script>
    </head>
 
    <body>

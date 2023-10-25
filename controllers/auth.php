@@ -6,22 +6,29 @@ use Core\App;
 use Core\Response;
 
 
+// caso encontrar erros, volta para o index e mostra erros na tela (acima do botao de entrar)
 $errors = [];
 
 // resolve classes no container
-// $ldap = App::container()->resolve('Core\Ldap');
+#$ldap = App::container()->resolve('Core\Ldap');
 $db = App::container()->resolve('Core\Database');
 
-
+$autorizar = null;
 // autentica login LDAP ou usuario incorreto
-$autorizar = $ldap->pesquisaUsuario($_POST['user'],$_POST['senha']);
+#$autorizar = $ldap->pesquisaUsuario($_POST['user'],$_POST['senha']);
 
 
 if(empty($autorizar)){
-    $errors['ldap'] = 'Usuário ou senha incorretos..';
+#    $errors['ldap'] = 'Usuário ou senha incorretos..';
+    $autorizar = [
+        'matricula' => $_POST['user'],
+        'curso' => "POA",
+        'nome' => "Teste MostraPoa",
+        'login' => "11122233344"
+        ];
+        
 }
 
-// caso encontrar erros, volta para o index e mostra erros na tela (acima do botao de entrar)
 
 
 // if (autorizar['curso'] existe em cursos)
@@ -39,9 +46,11 @@ if ($db->query('SELECT id_curso FROM CURSO WHERE id_curso = :curso;', ['curso' =
     
     
     header('location: /registro');
+} else {
+    $errors['retirada'] = 'O seu curso não parece ter permissão de retirada.';
 }
 
-$errors['ldap'] = 'O seu curso não parece ter permissão de retirada.';
+
 if(!empty($errors)){
     view('index.view.php', ['errors' => $errors]);
     exit();

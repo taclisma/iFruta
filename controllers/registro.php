@@ -14,5 +14,9 @@ if($checkRetirado){
     exit();
 }
 
+$view_var = ['matricula' => $_SESSION['usuario']['matricula'], 'nome' => $_SESSION['usuario']['nome'], 'curso' => $_SESSION['usuario']['id_curso']];
+if($view_var['curso'] === "POA"){
+    $view_var['mostrapoa'] = true;
+}
 //  vai para pagina do botão de registrar
-view('auth.view.php', ['matricula' => $_SESSION['usuario']['matricula']]);
+view('auth.view.php', $view_var);

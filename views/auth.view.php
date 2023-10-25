@@ -33,9 +33,12 @@
         <form method="POST" class="container receber" action="/registrar"> 
             <input hidden value="<?= $matricula;?>" name="user" id="user">
             <button type="submit" id="botao_receber">RECEBER</button>
-            <p class="matricula" style="text-align=center">
-              Matrícula: <?= $matricula;?>
-            </p>
+            <div id="atributos">
+              <p class="atributo"> Nome: <span class="bold"> <?= $nome;?> </span>  </p>
+              <p class="atributo"> Curso: <span class="bold"> <?= $curso;?> </span> </p>
+              <p class="atributo"> Matrícula: <span class="bold"> <?= $matricula;?> </span> </p>
+
+            </div>
         </form>
     </section>
 </body>

@@ -14,21 +14,23 @@ class Ldap {
         $this->ldapConn = ldap_connect($config['ldapServer']) or die("Incapaz de chegar ao servidor LDAP.");
         ldap_set_option($this->ldapConn, LDAP_OPT_PROTOCOL_VERSION, 3);
         ldap_set_option($this->ldapConn, LDAP_OPT_REFERRALS, 0);
-        // if($this->ldapConn){
-        //         error_log("ldapConn: conn ok \n", 0);
-        // } else {
-        //         error_log("ldapConn: conn ruim \n", 0);
-        // }
+        if($this->ldapConn){
+        	error_log("ldapConn: conn ok \n", 0);
+        } else {
+                error_log("ldapConn: conn ruim \n", 0);
+        }
     }
 
     public function pesquisaUsuario($user, $pass){
+	$this->ldapBind = ldap_bind($this->ldapConn, $this->config['ldapUser'], $this->config['ldapPassword']) or die("Incapaz de autenticar pelo servidor LDAP");
+        
 
-        $ldapSearch = ldap_search($this->ldapConn, $this->config['ldapBaseDN'], "(uid={$user})");
-
+	$ldapSearch = ldap_search($this->ldapConn, $this->config['ldapBaseDN'], "(uid={$user})");
+	
         if ($ldapSearch) {
+	
                 $ldapEntry = ldap_first_entry($this->ldapConn, $ldapSearch);
                 $userBind = $this->autorizaUsuario($ldapEntry, $pass);
-
                 if ($userBind){
 
                         $ldapAtributes = ldap_get_attributes($this->ldapConn, $ldapEntry);
@@ -45,7 +47,7 @@ class Ldap {
                         $matricula= explode("@", $ldapAtributes['mail'][0])[0];
                         $nome= $ldapAtributes['cn'][0];
                         // FIM MUDANÇA LUIS 
-                        echo 'conn ok, nome'.$nome;
+                        #echo 'conn ok, nome'. $user;
                         
                         return [
                                 'matricula' => $matricula,
