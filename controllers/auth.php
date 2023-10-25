@@ -15,10 +15,12 @@ $db = App::container()->resolve('Core\Database');
 
 $autorizar = null;
 // autentica login LDAP ou usuario incorreto
-$autorizar = $ldap->pesquisaUsuario($_POST['user'],$_POST['senha']);
+if (isset($_POST['senha'])){
+    $autorizar = $ldap->pesquisaUsuario($_POST['user'],$_POST['senha']);
+}
 
 
-if(empty($autorizar)){
+if(!isset($autorizar)){
 #    $errors['ldap'] = 'Usuário ou senha incorretos..';
     $autorizar = [
         'matricula' => $_POST['user'],
