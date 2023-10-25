@@ -10,8 +10,7 @@ $container = new Container();
 $container->bind('Core\Database', function () {
     $config = require base_path('config.php');
 
-    //troca config para prod
-    return new Database($config['dblocal']);
+    return new Database($config['db']);
 });
 
 $container->bind('Core\Ldap', function(){
@@ -20,7 +19,7 @@ $container->bind('Core\Ldap', function(){
 });
 
 
-$db = $container->resolve('Core\Database'); 
+$db = $container->resolve('Core\Database');
 $ldap = $container->resolve('Core\Ldap');
 
 

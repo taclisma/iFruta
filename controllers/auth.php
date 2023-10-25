@@ -9,7 +9,7 @@ use Core\Response;
 $errors = [];
 
 // resolve classes no container
-// $ldap = App::container()->resolve('Core\Ldap');
+$ldap = App::container()->resolve('Core\Ldap');
 $db = App::container()->resolve('Core\Database');
 
 

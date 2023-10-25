@@ -8,14 +8,14 @@ namespace Core;
 
 class Router {
     protected $routes = [];
-    
+
     protected function add($uri, $controller, $method){
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
             'method' => $method,
             'only' => null
-    
+
         ];
 
         return $this;
@@ -42,9 +42,9 @@ class Router {
 
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
-                
-            #############
-            #   redirecionamento de rotas para usuário não acessar paginas que nao tem acesso
+
+                #############
+                #   redirecionamento de rotas para usuário não acessar paginas que nao tem acesso
 
                 if($route['only'] === 'guest'){
                     if(isset($_SESSION['usuario']) ?? false){
@@ -59,11 +59,11 @@ class Router {
                         exit();
                     }
                 }
-            #   
-            ############
-            
+                #
+                ############
+
                 return require base_path($route['controller']);
-                
+
             }
         }
 
@@ -76,7 +76,7 @@ class Router {
         require base_path("views/error/{$code}.php");
 
         die();
-    
+
     }
 
 }
