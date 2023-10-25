@@ -28,6 +28,23 @@
     <header>
       <img id="logo_header" src="/images/logo_ifrs.png" alt="Logo do IFRS Campus Porto Alegre">
     </header>
+    <?php if (isset($mostrapoa)) : ?>
+      <style>
+        .teste-notif{
+          padding:15px;
+          width: 100%;
+          background-color: #599c065d;
+          color: #274009;
+          text-align:center;
+
+        }
+        
+
+      </style>
+        <div class="teste-notif">
+          <p>Login de teste para o MOSTRAPOA! Bem vindo!</p>
+        </div>
+    <?php endif; ?>
 
     <section class="container">
         <form method="POST" class="container receber" action="/registrar"> 

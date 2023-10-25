@@ -30,7 +30,7 @@
          <p id="login_paragraph">Informe o usuário e a senha do Moodle</p>
          <?php if (isset($errors['ldap'])) : ?>
                <p class="mensagem_erro"> <?= $errors['ldap'] ?> </p>
-            <?php endif; ?>
+         <?php endif; ?>
                <label for="user">Identificação do Usuário: </label>
                <input type="text" name="user" id="user">
                
