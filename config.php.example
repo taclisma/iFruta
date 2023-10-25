@@ -1,0 +1,20 @@
+<?php
+
+return [
+    'db' => [
+        'dbname' => '',
+        'host' => '',
+        'user' => '',
+        'password' => '',
+        'charset' => ''
+    ],
+
+    'ldap' => [
+        "ldapServer" => "",
+        "ldapBaseDN" => "",
+
+        // Usuário com permissões de leitura no LDAP
+        "ldapUser" => "",
+        "ldapPassword" => ''
+    ]
+];
